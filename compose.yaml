@@ -1,8 +1,14 @@
+networks:
+  bind_net:
+    driver: bridge
+
 services:
   imr:
     container_name: IMR
     image: internetsystemsconsortium/bind9:9.18
     restart: always
+    networks:
+      - bind_net
     ports:
       - "53:53/udp"
       - "53:53/tcp"
@@ -17,6 +23,8 @@ services:
     container_name: PRI
     image: internetsystemsconsortium/bind9:9.18
     restart: always
+    networks:
+      - bind_net
     ports:
       - "1053:53/udp"
       - "1053:53/tcp"
@@ -31,6 +39,8 @@ services:
     container_name: SEC
     image: internetsystemsconsortium/bind9:9.18
     restart: always
+    networks:
+      - bind_net
     ports:
       - "2053:53/udp"
       - "2053:53/tcp"
