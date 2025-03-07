@@ -1,0 +1,30 @@
+# Ignore all logs
+**/var/log/*
+!**/var/log/.gitkeep
+
+# Ignore cache and temporary files
+**/var/cache/bind/*
+!**/var/cache/bind/.gitkeep
+
+# Ignore dynamically created zone files and data
+**/var/lib/bind/*
+!**/var/lib/bind/.gitkeep
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore PowerShell and Bash script backups
+*.bak
+*.tmp
+*.swp
+
+# Ignore Docker-related files
+*.env
+docker-compose.override.yml
+
+# Ignore editor and OS-specific files
+.vscode/
+.idea/
+*.~*
+*.log
