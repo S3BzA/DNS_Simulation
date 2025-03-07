@@ -1,0 +1,42 @@
+services:
+  imr:
+    container_name: IMR
+    image: internetsystemsconsortium/bind9:9.18
+    restart: always
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+      - "127.0.0.1:953:953/tcp"
+    volumes:
+      - ./imr/etc/bind:/etc/bind
+      - ./imr/var/cache/bind:/var/cache/bind
+      - ./imr/var/lib/bind:/var/lib/bind
+      - ./imr/var/log:/var/log
+
+  pri:
+    container_name: PRI
+    image: internetsystemsconsortium/bind9:9.18
+    restart: always
+    ports:
+      - "1053:53/udp"
+      - "1053:53/tcp"
+      - "127.0.0.1:1053:953/tcp"
+    volumes:
+      - ./pri/etc/bind:/etc/bind
+      - ./pri/var/cache/bind:/var/cache/bind
+      - ./pri/var/lib/bind:/var/lib/bind
+      - ./pri/var/log:/var/log
+
+  sec:
+    container_name: SEC
+    image: internetsystemsconsortium/bind9:9.18
+    restart: always
+    ports:
+      - "2053:53/udp"
+      - "2053:53/tcp"
+      - "127.0.0.1:2053:953/tcp"
+    volumes:
+      - ./sec/etc/bind:/etc/bind
+      - ./sec/var/cache/bind:/var/cache/bind
+      - ./sec/var/lib/bind:/var/lib/bind
+      - ./sec/var/log:/var/log
