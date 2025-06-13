@@ -1,0 +1,16 @@
+$TTL 5000
+18.10.in-addr.arpa. IN SOA ns.romeo.dnslab. hm.romeo.dnslab. (
+        2025030600;
+        10800;
+        3600;
+        604800;
+        900) ;
+
+18.10.in-addr.arpa.            IN NS   ns.romeo.dnslab.
+18.10.in-addr.arpa.            IN NS   ns.papa.dnslab.
+18.10.in-addr.arpa.            IN NS   ns.delta.dnslab.
+$ORIGIN 0.18.10.in-addr.arpa.
+
+4       IN      PTR     pri.romeo.dnslab.
+2       IN      PTR     imr.romeo.dnslab.
+3       IN      PTR     client.romeo.dnslab.

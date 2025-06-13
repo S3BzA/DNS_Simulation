@@ -1,7 +1,6 @@
 networks:
   bind_net:
     driver: bridge
-
 services:
   imr:
     container_name: IMR

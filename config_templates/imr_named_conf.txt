@@ -1,0 +1,41 @@
+# 2025-03-07
+trust-anchors {
+        "." initial-key 257 3 15 "dem0H2M22a8CDAe0PDZoGBBCBB2fHJ1fe39FkhNToAA=";        
+};
+
+options {
+        directory               "/usr/pkg/etc/domain";
+        recursion               yes;
+        dnssec-validation       yes;
+        listen-on               { 10.18.0.2; 127.0.0.1; };
+        listen-on-v6            { 3ffe:b80:1:12::2; ::1; };
+        allow-query             { 0.0.0.0/0; ::/0; };
+        disable-empty-zone      "10.in-addr.arpa";
+};
+
+zone "." IN {
+        type hint;
+        file "root.hints";
+};
+
+logging {
+        channel config_log {
+                file "/usr/pkg/etc/domain/config.log" versions 2
+                size 100K; print-severity yes; print-category yes;
+        };
+        channel query_log {
+                file "/usr/pkg/etc/domain/queries.log" versions 2
+                size 1M; print-time yes;
+        };
+        channel default_log {
+                file "/usr/pkg/etc/domain/default.log" versions 3
+                size 500K; print-time yes; print-category yes;
+        };
+        category config         { config_log; };
+        category default        { default_log; };
+        category general        { default_log; };
+        category notify         { default_log; };
+        category security       { default_log; };
+        category update         { default_log; };
+        category queries        { query_log; };
+};

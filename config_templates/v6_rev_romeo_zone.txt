@@ -1,0 +1,16 @@
+$TTL 5000
+2.1.0.0.1.0.0.0.0.8.b.0.e.f.f.3.ip6.arpa. IN SOA ns.romeo.dnslab. hm.romeo.dnslab. (
+        2025030600;
+        10800;
+        3600;
+        604800;
+        900) ;
+
+2.1.0.0.1.0.0.0.0.8.b.0.e.f.f.3.ip6.arpa.   IN NS   ns.romeo.dnslab.
+2.1.0.0.1.0.0.0.0.8.b.0.e.f.f.3.ip6.arpa.   IN NS   ns.papa.dnslab.
+2.1.0.0.1.0.0.0.0.8.b.0.e.f.f.3.ip6.arpa.   IN NS   ns.delta.dnslab.
+$ORIGIN 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2.1.0.0.1.0.0.0.0.8.b.0.e.f.f.3.ip6.arpa
+
+4       IN      PTR     pri.romeo.dnslab.
+2       IN      PTR     imr.romeo.dnslab.
+3       IN      PTR     client.romeo.dnslab.

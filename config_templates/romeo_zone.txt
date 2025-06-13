@@ -1,0 +1,20 @@
+$TTL 5000
+romeo.dnslab. IN SOA ns.romeo.dnslab. hm.romeo.dnslab. (
+        2025030607;
+        10807;
+        3600;
+        604800;
+        900) ;
+romeo.dnslab.            IN NS   ns.romeo.dnslab.
+romeo.dnslab.            IN NS   ns.papa.dnslab.
+romeo.dnslab.            IN NS   ns.delta.dnslab.
+ns.romeo.dnslab.         IN A    172.16.91.18
+ns.romeo.dnslab.         IN AAAA 2a01:bad:cafe:f::12:1
+pri.romeo.dnslab.        IN A    10.18.0.4
+pri.romeo.dnslab.        IN AAAA 3ffe:b80:1:12::4
+imr.romeo.dnslab.        IN A    10.18.0.2
+imr.romeo.dnslab.        IN AAAA 3ffe:b80:1:12::2
+client.romeo.dnslab.     IN A    10.18.0.3
+client.romeo.dnslab.     IN AAAA 3ffe:b80:1:12::3
+www.romeo.dnslab.        IN A    172.18.0.10
+www.romeo.dnslab.        IN AAAA 2a01:bad:cafe:f::a

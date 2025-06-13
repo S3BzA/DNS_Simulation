@@ -1,0 +1,4 @@
+.               7200 IN NS p.root.
+.               7200 IN NS q.root.
+p.root.         7200 IN A  172.16.0.17
+q.root.         7200 IN A  172.16.1.17

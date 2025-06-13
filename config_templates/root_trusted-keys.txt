@@ -1,0 +1,5 @@
+; This is a key-signing key, keyid 56910, for .
+; Created: 20241006123904 (Sun Oct  6 12:39:04 2024)
+; Publish: 20241006123904 (Sun Oct  6 12:39:04 2024)
+; Activate: 20241006123904 (Sun Oct  6 12:39:04 2024)
+. IN DNSKEY 257 3 15 dem0H2M22a8CDAe0PDZoGBBCBB2fHJ1fe39FkhNToAA=

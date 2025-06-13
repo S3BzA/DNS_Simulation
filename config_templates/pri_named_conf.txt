@@ -1,0 +1,58 @@
+options {
+        directory       "/usr/pkg/etc/domain";
+        recursion       no;
+        listen-on       { 10.18.0.4; 127.0.0.1; };
+        listen-on-v6    { 3ffe:b80:1:12::4; ::1; };
+        notify explicit;
+        also-notify { 172.16.91.18; 2a01:bad:cafe:f::12:1; };
+        disable-empty-zone "10.in-addr.arpa";
+        allow-transfer { the-secondaries; key key.for.2025; };
+};
+
+logging {
+        channel config_log {
+                file "/usr/pkg/etc/domain/config.log" versions 2
+                size 100K; print-severity yes; print-category yes;
+        };
+        channel query_log {
+                file "/usr/pkg/etc/domain/queries.log" versions 2
+                size 1M; print-time yes;
+        };
+        channel default_log {
+                file "/usr/pkg/etc/domain/default.log" versions 3
+                size 500K; print-time yes; print-category yes;
+        };
+        category config         { config_log; };
+        category default        { default_log; };
+        category general        { default_log; };
+        category notify         { default_log; };
+        category security       { default_log; };
+        category update         { default_log; };
+        category queries        { query_log; };
+};
+
+acl the-secondaries {
+        172.16.91.18;
+        2a01:bad:cafe:f::12:1;
+        key key.for.2025;
+};
+
+key "key.for.2025" {
+        algorithm hmac-sha256;
+        secret "Lfp1ejeMtY6H7IeGzl+yBgJy+1Y6DsYtsisXClNm2to=";
+};
+
+zone "romeo.dnslab" IN {
+        type primary;
+        file "romeo.dnslab";
+};
+
+zone "18.10.in-addr.arpa" IN {
+        type primary;
+        file "18.10.in-addr.arpa";
+};
+
+zone "2.1.0.0.1.0.0.0.0.8.b.0.e.f.f.3.ip6.arpa" IN {
+        type primary;
+        file "2.1.0.0.1.0.0.0.0.8.b.0.e.f.f.3.ip6.arpa";
+};
