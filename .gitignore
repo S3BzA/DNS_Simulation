@@ -28,3 +28,8 @@ docker-compose.override.yml
 .idea/
 *.~*
 *.log
+
+# Ignore config directories
+/imr
+/pri
+/sec
