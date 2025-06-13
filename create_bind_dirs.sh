@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define base directories
-BASE_DIRS=("imr" "pri" "sec")
+BASE_DIRS=("root" "imr" "pri" "sec")
 SUB_DIRS=("etc/bind" "var/cache/bind" "var/lib/bind" "var/log")
 
 # Loop through and create the directories

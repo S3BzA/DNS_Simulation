@@ -1,17 +1,21 @@
 networks:
   bind_net:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 10.200.0.0/24
+
 services:
   imr:
     container_name: IMR
     image: internetsystemsconsortium/bind9:9.18
-    restart: always
     networks:
-      - bind_net
-    ports:
-      - "53:53/udp"
-      - "53:53/tcp"
-      - "127.0.0.1:953:953/tcp"
+      bind_net:
+        ipv4_address: 10.200.0.4
+    expose:
+      - "1053/udp"
+      - "1053/tcp"
+      - "953/tcp"
     volumes:
       - ./imr/etc/bind:/etc/bind
       - ./imr/var/cache/bind:/var/cache/bind
@@ -21,13 +25,13 @@ services:
   pri:
     container_name: PRI
     image: internetsystemsconsortium/bind9:9.18
-    restart: always
     networks:
-      - bind_net
-    ports:
-      - "1053:53/udp"
-      - "1053:53/tcp"
-      - "127.0.0.1:1053:953/tcp"
+      bind_net:
+        ipv4_address: 10.200.0.5
+    expose:
+      - "2053/udp"
+      - "2053/tcp"
+      - "953/tcp"
     volumes:
       - ./pri/etc/bind:/etc/bind
       - ./pri/var/cache/bind:/var/cache/bind
@@ -37,15 +41,29 @@ services:
   sec:
     container_name: SEC
     image: internetsystemsconsortium/bind9:9.18
-    restart: always
     networks:
-      - bind_net
-    ports:
-      - "2053:53/udp"
-      - "2053:53/tcp"
-      - "127.0.0.1:2053:953/tcp"
+      bind_net:
+        ipv4_address: 10.200.0.6
+    expose:
+      - "3053/udp"
+      - "3053/tcp"
+      - "953/tcp"
     volumes:
       - ./sec/etc/bind:/etc/bind
       - ./sec/var/cache/bind:/var/cache/bind
       - ./sec/var/lib/bind:/var/lib/bind
       - ./sec/var/log:/var/log
+
+  root:
+    container_name: ROOT
+    image: internetsystemsconsortium/bind9:9.18
+    networks:
+      bind_net:
+        ipv4_address: 10.200.0.1
+    expose:
+      - "53/udp"
+      - "53/tcp"
+    volumes:
+      - ./root/etc/bind:/etc/bind
+      - ./root/var/cache/bind:/var/cache/bind
+      - ./root/var/log:/var/log

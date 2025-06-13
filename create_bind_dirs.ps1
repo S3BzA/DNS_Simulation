@@ -1,5 +1,5 @@
 # Define the base directories
-$baseDirs = @("imr", "pri", "sec")
+$baseDirs = @("root", "imr", "pri", "sec")
 $subDirs = @("etc/bind", "var/cache/bind", "var/lib/bind", "var/log")
 
 # Loop through and create the directories

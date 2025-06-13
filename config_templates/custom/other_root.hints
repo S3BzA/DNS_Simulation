@@ -1,0 +1,2 @@
+.   7200 IN NS    p.root.
+p.root.     7200 IN A     172.16.0.17

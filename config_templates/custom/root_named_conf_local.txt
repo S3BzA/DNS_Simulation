@@ -1,0 +1,6 @@
+zone "." IN {
+    type master;
+    file "/etc/bind/db.root";
+    allow-query { any; };
+};
+	
